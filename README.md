@@ -5,7 +5,7 @@ This repository is frontend solution (Option 1) for [Summer 2020 pre-assignment 
 ## Structure of design
 The webpage is divided into 4 mains compoments: Navbar, Suggestion, Restaurants, Pagecontroller and Footer
 
-[![frontend.jpg](https://i.postimg.cc/ZYpYJg4C/wolt-design.jpg)](https://postimg.cc/9DZ030qG)
+[![frontend.png](https://i.postimg.cc/YqWxfZTN/woltapp.png)](https://postimg.cc/N5QTQJsL)
 
 Components:
 * _Navbar_: Navigate to components' position
