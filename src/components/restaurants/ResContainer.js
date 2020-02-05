@@ -6,15 +6,14 @@ import { pageConfig } from '../../config';
 import PropTypes from 'prop-types';
 
 
-const ResContainer = props => {
-    const { restaurants, sort, page } = props;
+const ResContainer = ({ restaurants, sort, page }) => {
     const { maxItemInOnePage } = pageConfig;
     const resGroup = sortRestaurant(restaurants, sort);
     const resGroupLimited = limitRestaurants(resGroup, page, maxItemInOnePage);
 
-    let result = resGroupLimited.map((element, index) => {
+    const result = resGroupLimited.map((element, index) => {
       const { name, description, currency, online, delivery_price, image, tags } = element;
-      let status = online ? "Online" : "Offline"
+      const status = online ? "Online" : "Offline"
       return( 
             <Card key={index} datatest="restaurant">
             <Card.Img variant="top" src={image} datatest="image"/>

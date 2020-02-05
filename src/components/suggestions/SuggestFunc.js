@@ -21,13 +21,13 @@ export const getDistance = (firstPos, secondPos) => {
 
 export const suggestLocation = dispatch => {
     navigator.geolocation.getCurrentPosition(position => {
-      let currentPos = {
+      const currentPos = {
         lat: position.coords.latitude,
         lon: position.coords.longitude
       }    
       
-      let dataIncludeDis = data.restaurants.map(element => {
-        let restaurantPos = {
+      const dataIncludeDis = data.restaurants.map(element => {
+        const restaurantPos = {
           lat: element.location[1],
           lon: element.location[0]
         }
@@ -36,7 +36,7 @@ export const suggestLocation = dispatch => {
         return element
       })
   
-      let dataSorted = _.orderBy(dataIncludeDis, ['distance'],['asc']);
+      const dataSorted = _.orderBy(dataIncludeDis, ['distance'],['asc']);
       
       dispatch(setSuggestion(dataSorted.slice(0,3)))
     });

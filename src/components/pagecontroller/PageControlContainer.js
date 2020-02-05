@@ -5,22 +5,15 @@ import NumberContainer from './NumberContainer';
 import PropTypes from 'prop-types';
 
 
-const PagesControlContainer = props => {
-    const { dispatch, page, pageAmount } = props;
-    let { bound, changePage } = usePageBound(pageAmount);
-    let [min, max] = bound;    
-    let numberContainerProps = {
-        dispatch, 
-        page, 
-        min, 
-        max
-    }
+const PagesControlContainer = ({ dispatch, page, pageAmount }) => {
+    const { bound, changePage } = usePageBound(pageAmount);
+    const [min, max] = bound;    
     
     return(
         <Pagination className="d-flex justify-content-center" datatest="PageControlContainer">
             <Pagination.First disabled={page === 1} onClick={() => changePage(dispatch, page, "first")}/>
             <Pagination.Prev disabled={page === 1}  onClick={() => changePage(dispatch, page, "prev")}/>
-                <NumberContainer {...numberContainerProps} datatest="NumberContainer"/> 
+                <NumberContainer {...{ dispatch, page, min, max }} datatest="NumberContainer"/> 
             <Pagination.Next disabled={page === pageAmount} onClick={() => changePage(dispatch, page, "next")}/>
             <Pagination.Last disabled={page === pageAmount} onClick={() => changePage(dispatch, page, "last")}/>
         </Pagination>

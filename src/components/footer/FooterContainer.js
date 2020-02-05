@@ -2,9 +2,7 @@ import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-const FooterContainer = props => {
-    const { downloadImg } = props;
-
+const FooterContainer = ({ downloadImg }) => {
     return(
         <footer className="footer text-center" datatest="FooterContainer">
                 <Row>

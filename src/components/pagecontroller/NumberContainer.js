@@ -4,9 +4,8 @@ import { setPage } from '../../actions/actions';
 import PropTypes from 'prop-types';
 
 
-const NumberContainer = props => {
-    const { dispatch, page, min, max } = props;
-    let items = [];
+const NumberContainer = ({ dispatch, page, min, max }) => {
+    const items = [];
     
     for (let number = min; number <= max; number++) {
         items.push(

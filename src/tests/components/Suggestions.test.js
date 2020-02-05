@@ -65,13 +65,10 @@ describe('SuggestContainer test', () => {
     })
 
     describe('Have props', () => {
-        let component;
-        beforeEach(() => {
-            const props = {
-                suggestions: suggestionsTest
-            };
-            component = setUp(props);
-        });
+        const props = {
+            suggestions: suggestionsTest
+        };
+        const component = setUp(props);
 
         it('Should render lists of suggestion', () => {
             const wrapper = findByTestAtrr(component, "suggestion");

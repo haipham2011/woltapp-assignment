@@ -23,14 +23,11 @@ describe('OptionContainer test', () => {
     })
 
     describe('Have props', () => {
-        let component;
-        beforeEach(() => {
-            const props = {
-                dispatch: jest.fn(),
-                sort: "name-asc"
-            };
-            component = setUp(props);
-        });
+        const props = {
+            dispatch: jest.fn(),
+            sort: "name-asc"
+        };
+        const component = setUp(props);
 
         it('Should render lists of option', () => {
             const wrapper = findByTestAtrr(component, "option");
@@ -63,14 +60,11 @@ describe('SortContainer test', () => {
     })
 
     describe('Have props', () => {
-        let component;
-        beforeEach(() => {
-            const props = {
-                dispatch: jest.fn(),
-                sort: "name-asc"
-            };
-            component = setUp(props);
-        });
+        const props = {
+            dispatch: jest.fn(),
+            sort: "name-asc"
+        };
+        const component = setUp(props);
 
         it('Should render lists of option', () => {
             const wrapper = findByTestAtrr(component, "SortContainer");

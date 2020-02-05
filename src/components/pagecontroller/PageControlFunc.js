@@ -18,9 +18,9 @@ export const pageNumCal = (total, range) => {
 
 export const pageRangeCal = (page, maxNumberInOnePage, pageGroup, pageAmount) => {    
     for(let i = 1; i <= pageGroup; i++){
-        let max = maxNumberInOnePage >= pageAmount ? pageAmount : i*maxNumberInOnePage;
-        let range = maxNumberInOnePage >= pageAmount ? pageAmount : maxNumberInOnePage;
-        let min = max-range+1;
+        const max = maxNumberInOnePage >= pageAmount ? pageAmount : i*maxNumberInOnePage;
+        const range = maxNumberInOnePage >= pageAmount ? pageAmount : maxNumberInOnePage;
+        const min = max-range+1;
 
         if(max >= page){
             if(max >= pageAmount){

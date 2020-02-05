@@ -25,16 +25,13 @@ describe('FooterContainer test', () => {
     })
 
     describe('Have props', () => {
-        let component;
-        beforeEach(() => {
-            const props = {
-                downloadImg: {
-                    ios: "https://example-ios.com",
-                    android: "https://example-android.com"
-                }
+        const props = {
+            downloadImg: {
+                ios: "https://example-ios.com",
+                android: "https://example-android.com"
             }
-            component = setUp(props);
-        });
+        };
+        const component = setUp(props);
 
         it('Should render without errors', () => {
             const wrapper = findByTestAtrr(component, "FooterContainer");

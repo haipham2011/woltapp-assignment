@@ -33,23 +33,20 @@ describe('NavbarContainer test', () => {
     })
 
     describe('Have props', () => {
-        let component;
-        beforeEach(() => {
-            const props = {
-                logoImg: "https://example.jpg",
-                pages: [
-                    {
-                        href: "#href1",
-                        content: "content1"
-                    },
-                    {
-                        href: "#href2",
-                        content: "content2"
-                    },
-                ]
-            }
-            component = setUp(props);
-        });
+        const props = {
+            logoImg: "https://example.jpg",
+            pages: [
+                {
+                    href: "#href1",
+                    content: "content1"
+                },
+                {
+                    href: "#href2",
+                    content: "content2"
+                },
+            ]
+        }
+        const component = setUp(props);
 
         it('Should render NavbarContainer', () => {
             const wrapper = findByTestAtrr(component, "NavbarContainer");
@@ -91,24 +88,21 @@ describe('LinkContainer test', () => {
     })
 
     describe('Have props', () => {
-        let component;
-        beforeEach(() => {
-            const props = {
-                logoImg: "https://example.jpg",
-                pages: [
-                    {
-                        href: "#href1",
-                        content: "content1"
-                    },
-                    {
-                        href: "#href2",
-                        content: "content2"
-                    },
-                ]
-            }
-            component = setUp(props);
-        });
-
+        const props = {
+            logoImg: "https://example.jpg",
+            pages: [
+                {
+                    href: "#href1",
+                    content: "content1"
+                },
+                {
+                    href: "#href2",
+                    content: "content2"
+                },
+            ]
+        }
+        const component = setUp(props);
+        
         it('Should render a list of link', () => {
             const wrapper = findByTestAtrr(component, "link");
             expect(wrapper.length).toBe(2);

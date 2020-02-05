@@ -4,11 +4,10 @@ import { useCarousel } from './SuggestFunc';
 import PropTypes from 'prop-types';
 
 
-const SuggestContainer = props => {
-    const { suggestions } = props;
-    let { index, handleSelect } = useCarousel();
+const SuggestContainer = ({ suggestions }) => {
+    const { index, handleSelect } = useCarousel();
   
-    let result = suggestions.map((element, index) => {
+    const result = suggestions.map((element, index) => {
       return (
           <Carousel.Item key={index} datatest="suggestion">
               <img

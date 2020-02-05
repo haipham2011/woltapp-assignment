@@ -4,9 +4,7 @@ import LinkContainer from './LinkContainer';
 import PropTypes from 'prop-types';
 
 
-const NavbarContainer = props => {
-  const { logoImg } = props;
-
+const NavbarContainer = ({ logoImg, pages }) => {
   return (
       <Navbar datatest="NavbarContainer">
       <Navbar.Brand >
@@ -17,7 +15,7 @@ const NavbarContainer = props => {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
-          <LinkContainer {...props} />
+          <LinkContainer {...{pages}}/>
       </Navbar.Collapse>
     </Navbar>
   );

@@ -2,7 +2,7 @@ import { GET_RESTAURANTS, SET_PAGE, SORT_RESTAURANTS, SET_SUGGESTION } from './a
 import data from '../data/restaurants.json';
  
 export const getRestaurants = () => {
-    let restaurants = data.restaurants;
+    const restaurants = data.restaurants;
     return {
         type: GET_RESTAURANTS,
         restaurants
