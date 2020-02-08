@@ -30,7 +30,6 @@ const setUp = (initialState={}) => {
 };
 
 describe('App test', () => {
-    let component;
     afterEach(() => {
         jest.clearAllMocks();
     });
@@ -43,7 +42,7 @@ describe('App test', () => {
             suggestions: suggestionsTest,
         }
 
-        component = setUp(initialState);
+        const component = setUp(initialState);
         
         it('Should render NavBar', () => {
             const wrapper = findByTestAtrr(component, "NavBar");

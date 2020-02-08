@@ -5,14 +5,12 @@ import { sortConfig } from '../../config';
 import PropTypes from 'prop-types';
 
 
-const OptionContainer = props => {
-    const { dispatch, sort } = props;
-    
+const OptionContainer = ({ dispatch, sort }) => {    
     const handleChange = e => {
         dispatch(sortRestaurants(e.target.value));        
     }
 
-    let result = sortConfig.map((element, index) => {
+    const result = sortConfig.map((element, index) => {
         return <option value={element.type} key={index} datatest="option">{sort === element.type ? "Sort by: " : ""} {element.content}</option>
     })
 

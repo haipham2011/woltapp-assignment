@@ -62,17 +62,14 @@ describe('NumberContainer test', () => {
     })
 
     describe('Have props', () => {
-        let component;
-        beforeEach(() => {
-            const props = {
-                dispatch: jest.fn(),
-                page: 1,
-                min: 1,
-                max: 5
-            };
-            component = setUp(props);
-        });
-
+        const props = {
+            dispatch: jest.fn(),
+            page: 1,
+            min: 1,
+            max: 5
+        };
+        const component = setUp(props);
+        
         it('Should render lists of number', () => {
             const wrapper = findByTestAtrr(component, "number");
             expect(wrapper.length).toBe(5);
@@ -101,17 +98,14 @@ describe('PageControlContainer test', () => {
     })
 
     describe('Have props', () => {
-        let component;
-        beforeEach(() => {
-            const props = {
-                dispatch: jest.fn(),
-                page: 1, 
-                pageBoundary: [1,5],  
-                pageAmount: 10
-            };
-            component = setUp(props);
-        });
-
+        const props = {
+            dispatch: jest.fn(),
+            page: 1, 
+            pageBoundary: [1,5],  
+            pageAmount: 10
+        };
+        const component = setUp(props);
+        
         it('Should render lists of number', () => {
             const wrapper = findByTestAtrr(component, "NumberContainer");
             expect(wrapper.length).toBe(1);

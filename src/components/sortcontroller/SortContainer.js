@@ -4,8 +4,7 @@ import OptionContainer from './OptionContainer';
 import PropTypes from 'prop-types';
 
 
-const SortContainer = props => {
-    const { dispatch, sort } = props;
+const SortContainer = ({ dispatch, sort }) => {
     const optionProps = {
         dispatch,
         sort
