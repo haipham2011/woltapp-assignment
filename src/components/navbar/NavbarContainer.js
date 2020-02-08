@@ -1,28 +1,22 @@
-import React from 'react';
-import { Navbar } from 'react-bootstrap';
-import LinkContainer from './LinkContainer';
-import PropTypes from 'prop-types';
+import React from "react";
+import { Navbar } from "react-bootstrap";
+import LinkContainer from "./LinkContainer";
+import { logoImg } from "./config";
 
+const NavbarContainer = () => {
+  const { src, alt } = logoImg;
 
-const NavbarContainer = ({ logoImg, pages }) => {
   return (
-      <Navbar datatest="NavbarContainer">
-      <Navbar.Brand >
-        <img
-          alt=""
-          src={logoImg}
-          datatest="logoImg"/>
+    <Navbar datatest="NavbarContainer">
+      <Navbar.Brand>
+        <img alt={alt} src={src} datatest="logoImage" />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
-          <LinkContainer {...{pages}}/>
+        <LinkContainer />
       </Navbar.Collapse>
     </Navbar>
   );
-}
-
-NavbarContainer.propTypes = {
-    logoImg: PropTypes.string
-}
+};
 
 export default NavbarContainer;

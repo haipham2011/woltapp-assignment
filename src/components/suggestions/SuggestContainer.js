@@ -1,40 +1,38 @@
-import React from 'react';
-import { Carousel } from 'react-bootstrap';
-import { useCarousel } from './SuggestFunc';
-import PropTypes from 'prop-types';
-
+import React from "react";
+import { Carousel } from "react-bootstrap";
+import { useCarousel } from "./SuggestFunc";
+import PropTypes from "prop-types";
 
 const SuggestContainer = ({ suggestions }) => {
-    const { index, handleSelect } = useCarousel();
-  
-    const result = suggestions.map((element, index) => {
-      return (
-          <Carousel.Item key={index} datatest="suggestion">
+  const { index, handleSelect } = useCarousel();
+
+  return (
+    <div id="#home" datatest="SuggestContainer">
+      <Carousel activeIndex={index} onSelect={handleSelect} fade={true}>
+        {suggestions.map((element, index) => {
+          return (
+            <Carousel.Item key={index} datatest="suggestion">
               <img
-              className="d-block w-100"
-              src={element.image}
-              alt={`Slide ${index}`}
-              datatest="img"
+                className="d-block w-100"
+                src={element.image}
+                alt={`Slide ${index}`}
+                datatest="img"
               />
               <Carousel.Caption>
                 <h3 datatest="name">{element.name}</h3>
                 <p datatest="description">{element.description}</p>
               </Carousel.Caption>
-          </Carousel.Item>
-        );
-    })
-  
-    return(
-      <div id="#home" datatest="SuggestContainer">
-        <Carousel activeIndex={index} onSelect={handleSelect} fade={true}>
-            {result}
-        </Carousel> 
-      </div>
-    );
-  }
+            </Carousel.Item>
+          );
+        })}
+      </Carousel>
+    </div>
+  );
+};
 
-  SuggestContainer.propTypes = {
-    suggestions: PropTypes.arrayOf(PropTypes.shape({
+SuggestContainer.propTypes = {
+  suggestions: PropTypes.arrayOf(
+    PropTypes.shape({
       blurhash: PropTypes.string,
       city: PropTypes.string,
       currency: PropTypes.string,
@@ -45,7 +43,8 @@ const SuggestContainer = ({ suggestions }) => {
       name: PropTypes.string,
       online: PropTypes.bool,
       tags: PropTypes.arrayOf(PropTypes.string)
-    }))
-}
+    })
+  )
+};
 
-  export default SuggestContainer;
+export default SuggestContainer;

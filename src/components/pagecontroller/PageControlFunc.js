@@ -3,6 +3,17 @@ import { setPage } from '../../actions/actions';
 import { pageConfig } from '../../config';
 
 
+export const createMapArr = (min, max, fn) => {
+    const newArray = [];
+    for(let i = min; i <= max; i++){
+        newArray.push(
+            fn(i)
+        )
+    };
+
+    return newArray
+}
+
 export const pageNumCal = (total, range) => {
     let amount;
 
@@ -17,23 +28,20 @@ export const pageNumCal = (total, range) => {
 }
 
 export const pageRangeCal = (page, maxNumberInOnePage, pageGroup, pageAmount) => {    
-    for(let i = 1; i <= pageGroup; i++){
-        const max = maxNumberInOnePage >= pageAmount ? pageAmount : i*maxNumberInOnePage;
-        const range = maxNumberInOnePage >= pageAmount ? pageAmount : maxNumberInOnePage;
-        const min = max-range+1;
+    const rangePage = createMapArr(1,pageGroup, index => {
+        const range = maxNumberInOnePage -1;
+        const min = maxNumberInOnePage*index-range;
+        const max = min + range  >= pageAmount ? pageAmount : min + range;
+        return [min, max]
+    }).filter(pageRange => {
+        return page <= pageRange[1] && page >= pageRange[0];
+    })[0];
 
-        if(max >= page){
-            if(max >= pageAmount){
-                return [min, pageAmount]
-            }
-            return [min, max]
-        }
-    }
+    return rangePage;
 }
 
-export const usePageBound = pageAmount => {
+export const usePageBound = (pageAmount, pageGroup) => {
     const { maxNumberInOnePage } = pageConfig;
-    const pageGroup = pageNumCal(pageAmount, maxNumberInOnePage);
     const [bound, setBound] = useState([1,maxNumberInOnePage]);
 
     const changePage = (dispatch, page, type) => {

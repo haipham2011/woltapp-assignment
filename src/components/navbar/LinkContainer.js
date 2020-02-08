@@ -1,28 +1,20 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
-import PropTypes from "prop-types";
+import { pages } from "./config";
 
-const LinkContainer = ({ pages }) => {
+const LinkContainer = () => {
   return (
     <Nav datatest="LinkContainer">
       {pages.map((element, index) => {
+        const { href, content } = element;
         return (
-          <Nav.Link key={index} href={element.href} datatest="link">
-            {element.content}
+          <Nav.Link key={index} href={href} datatest="link">
+            {content}
           </Nav.Link>
         );
       })}
     </Nav>
   );
-};
-
-LinkContainer.propTypes = {
-  pages: PropTypes.arrayOf(
-    PropTypes.shape({
-      href: PropTypes.string,
-      content: PropTypes.string
-    })
-  )
 };
 
 export default LinkContainer;

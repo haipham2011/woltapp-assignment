@@ -1,12 +1,16 @@
 import React from 'react';
 import { Pagination } from 'react-bootstrap';
-import { usePageBound } from './PageControlFunc';
+import { usePageBound, pageNumCal } from './PageControlFunc';
 import NumberContainer from './NumberContainer';
 import PropTypes from 'prop-types';
+import { pageConfig } from '../../config';
 
 
-const PagesControlContainer = ({ dispatch, page, pageAmount }) => {
-    const { bound, changePage } = usePageBound(pageAmount);
+const PagesControlContainer = ({ dispatch, page, resAmount }) => {
+    const { maxItemInOnePage, maxNumberInOnePage } = pageConfig;
+    const pageAmount = pageNumCal(resAmount, maxItemInOnePage);
+    const pageGroup = pageNumCal(pageAmount, maxNumberInOnePage);
+    const { bound, changePage } = usePageBound(pageAmount, pageGroup);
     const [min, max] = bound;    
     
     return(

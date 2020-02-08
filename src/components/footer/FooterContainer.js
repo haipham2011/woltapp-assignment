@@ -1,32 +1,32 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-import PropTypes from 'prop-types';
+import { content, downloadImg } from './config';
 
-const FooterContainer = ({ downloadImg }) => {
+const FooterContainer = () => {
+    const { term, copyRight } = content;
+
     return(
         <footer className="footer text-center" datatest="FooterContainer">
                 <Row>
                     <Col>
-                        Terms and conditions
+                        {term}
                     </Col>
                     <Col>
-                        &copy; 2020 Wolt
+                        {copyRight}
                     </Col>
                     <Col id="download">
-                        <img src={downloadImg.ios} alt="Download app: ios" datatest="ios"/>
-                        <img src={downloadImg.android} alt="Download app: android" datatest="android"/>
+                        {
+                          downloadImg.map((image, index) => {
+                              const { src, alt } = image;
+                              return (
+                                  <img key={index} src={src} alt={alt} datatest="image"/>
+                              );
+                          })
+                        }
                     </Col>
                 </Row>
         </footer>
     );
 }
-
-FooterContainer.propTypes = {
-    downloadImg: PropTypes.exact({
-        ios: PropTypes.string,
-        android: PropTypes.string
-    })
-}
-
 
 export default FooterContainer;

@@ -2,19 +2,17 @@ import React from 'react';
 import { Pagination } from 'react-bootstrap';
 import { setPage } from '../../actions/actions';
 import PropTypes from 'prop-types';
+import { createMapArr } from './PageControlFunc';
 
 
 const NumberContainer = ({ dispatch, page, min, max }) => {
-    const items = [];
-    
-    for (let number = min; number <= max; number++) {
-        items.push(
-            <Pagination.Item key={number} onClick={() => {dispatch(setPage(number))}} active={ page === number } datatest="number">
-                {number}
+    return createMapArr(min, max, index => {
+        return(
+            <Pagination.Item key={index} onClick={() => {dispatch(setPage(index))}} active={ page === index } datatest="number">
+                {index}
             </Pagination.Item>
         );
-    }
-    return items;
+    });
 }
 
 NumberContainer.propTypes = {
