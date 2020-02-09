@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { findByTestAtrr, checkProps } from '../Utils';
+import { findByTestAtrr } from '../Utils';
 import NavbarContainer from '../../components/navbar/NavbarContainer';
 import LinkContainer from '../../components/navbar/LinkContainer';
 

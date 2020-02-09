@@ -15,7 +15,7 @@ describe("FooterContainer test", () => {
     expect(wrapper.length).toBe(1);
   });
 
-  it("Should render a image IOS", () => {
+  it("Should render two images ios and android", () => {
     const wrapper = findByTestAtrr(component, "image");
     expect(wrapper.length).toBe(2);
   });

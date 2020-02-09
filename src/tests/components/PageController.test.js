@@ -35,7 +35,7 @@ describe('PageControlFunc test', () => {
     })
 
     describe('changePage test', () => {
-        it('Should return correct array of page range', () => {
+        it('Should return current page correctly', () => {
             const { result } = renderHook(() => usePageBound(pageAmount, maxNumberInOnePage));
             const dispatch = jest.fn();
 
@@ -111,7 +111,7 @@ describe('PageControlContainer test', () => {
         };
         const component = setUp(props);
         
-        it('Should render lists of number', () => {
+        it('Should render NumberContainer', () => {
             const wrapper = findByTestAtrr(component, "NumberContainer");
             expect(wrapper.length).toBe(1);
         })

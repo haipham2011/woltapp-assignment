@@ -34,7 +34,7 @@ describe('OptionContainer test', () => {
             expect(wrapper.length).toBe(4);
         })
 
-        it('Should render lists of option', () => {
+        it('Should render OptionContainer', () => {
             const wrapper = findByTestAtrr(component, "OptionContainer");
             expect(wrapper.length).toBe(1);
         })
