@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Carousel } from "react-bootstrap";
-import { useCarousel } from "./SuggestFunc";
+import { useCarousel, useSuggest } from "./SuggestFunc";
 import PropTypes from "prop-types";
 
-const SuggestContainer = ({ suggestions }) => {
+const SuggestContainer = ({ restaurants }) => {
   const { index, handleSelect } = useCarousel();
+  const { suggestions, suggestLocation } = useSuggest();
+
+  useEffect(() => {
+    suggestLocation(restaurants)
+  }, [restaurants, suggestLocation]);
 
   return (
     <div id="#home" datatest="SuggestContainer">

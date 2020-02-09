@@ -1,0 +1,12 @@
+nav {
+    background-color: rgb(255, 255, 255);
+}
+
+nav img {
+    width: 77px;
+    height: 48px;
+}
+
+nav a {
+    padding-left: 15px;
+}

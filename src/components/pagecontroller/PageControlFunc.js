@@ -15,15 +15,8 @@ export const createMapArr = (min, max, fn) => {
 }
 
 export const pageNumCal = (total, range) => {
-    let amount;
-
-    if(total % range === 0){
-        amount = total/range;
-    }
-    else {
-        amount = parseInt(total/range) + 1;
-    }
-
+    const amount = total % range === 0 ? total/range : parseInt(total/range) + 1;
+    
     return amount
 }
 

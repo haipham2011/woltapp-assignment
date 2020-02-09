@@ -1,4 +1,4 @@
-import { GET_RESTAURANTS, SET_PAGE, SORT_RESTAURANTS, SET_SUGGESTION } from './actionTypes';
+import { GET_RESTAURANTS, SET_PAGE, SORT_RESTAURANTS } from './actionTypes';
 import data from '../data/restaurants.json';
  
 export const getRestaurants = () => {
@@ -20,12 +20,5 @@ export const sortRestaurants = sort => {
     return {
         type: SORT_RESTAURANTS,
         sort
-    }
-}
-
-export const setSuggestion = suggestions => {
-    return {
-        type: SET_SUGGESTION,
-        suggestions
     }
 }

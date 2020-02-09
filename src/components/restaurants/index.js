@@ -4,6 +4,7 @@ import { getRestaurants } from "../../actions/actions";
 import SortController from "../sortcontroller";
 import ResContainer from "./ResContainer";
 import { heading } from "./config";
+import './style.css';
 
 const Restaurants = () => {
   const { restaurants, sort, page } = useSelector(state => state);

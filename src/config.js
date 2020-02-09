@@ -1,4 +1,4 @@
 export const pageConfig = {
-    maxItemInOnePage: 5,
+    maxItemInOnePage: 8,
     maxNumberInOnePage: 5,
 }

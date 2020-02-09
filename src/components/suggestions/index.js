@@ -1,19 +1,14 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import SuggestContainer from "./SuggestContainer";
-import { suggestLocation } from "./SuggestFunc";
+import './style.css';
 
 const Suggestions = () => {
-  const { suggestions } = useSelector(state => state);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    suggestLocation(dispatch);
-  }, [dispatch, suggestions]);
+  const { restaurants } = useSelector(state => state);
 
   return (
     <div className="suggestions" datatest="Suggestions">
-      <SuggestContainer {...{ suggestions }} />
+      <SuggestContainer {...{ restaurants }} />
     </div>
   );
 };

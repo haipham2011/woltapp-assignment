@@ -1,11 +1,8 @@
 import { useState } from 'react';
-import data from '../../data/restaurants.json';
 import _ from 'lodash';
-import { setSuggestion } from '../../actions/actions';
-
 
 export const degToRad = deg => {
-    return deg * (Math.PI/180)
+    return deg * (Math.PI/180);
 }
   
 export const getDistance = (firstPos, secondPos) => {
@@ -19,27 +16,33 @@ export const getDistance = (firstPos, secondPos) => {
     return distance;
 }
 
-export const suggestLocation = dispatch => {
+export const useSuggest = () => {
+  const [suggestions, setSuggestion] = useState([]);
+
+  const suggestLocation = restaurants => {
     navigator.geolocation.getCurrentPosition(position => {
       const currentPos = {
         lat: position.coords.latitude,
         lon: position.coords.longitude
-      }    
+      };   
       
-      const dataIncludeDis = data.restaurants.map(element => {
+      const dataIncludeDis = restaurants.map(element => {
         const restaurantPos = {
           lat: element.location[1],
           lon: element.location[0]
-        }
+        };
   
-        element['distance'] = getDistance(currentPos, restaurantPos)
-        return element
-      })
+        element['distance'] = getDistance(currentPos, restaurantPos);
+        return element;
+      });
   
       const dataSorted = _.orderBy(dataIncludeDis, ['distance'],['asc']);
       
-      dispatch(setSuggestion(dataSorted.slice(0,3)))
+      setSuggestion(dataSorted.slice(0,3));
     });
+  }
+
+  return { suggestions, suggestLocation }
 }
 
 export const useCarousel = () => {

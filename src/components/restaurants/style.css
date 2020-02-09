@@ -1,0 +1,57 @@
+.restaurants h3{
+    padding-top: 146px;
+    padding-bottom: 100px;
+    font-weight: bold;
+    font-size: 4rem;
+}
+
+.restaurants .name {
+    font-weight: bold;
+}
+
+.restaurants .status{
+    font-style: italic;
+}
+
+.restaurants .online {
+    color: rgb(98, 223, 20);
+    font-size: small;
+}
+
+.restaurants .offline {
+    color: rgb(71, 71, 71);
+    font-size: small;
+}
+
+@media (min-width: 48em) {
+    .card-columns {
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+    }
+    .restaurants img {
+        height: 500px;
+    }
+}
+
+@media (min-width: 62em) {
+    .card-columns {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+    .restaurants img {
+        height: 293px;
+    }
+}
+
+@media (min-width: 75em) {
+    .card-columns {
+        -webkit-column-count: 4;
+        -moz-column-count: 4;
+        column-count: 4;
+    }
+    .restaurants img {
+        height: 293px;
+    }
+}

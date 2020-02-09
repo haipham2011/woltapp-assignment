@@ -1,0 +1,15 @@
+
+footer {
+    padding: 50px 0px 30px 0px;
+    margin: 0px 30px 0px 30px;
+}
+
+.footerBottom {
+    margin-top: 128px;
+    background-color: rgb(243, 243, 243);
+}
+
+footer img{
+    width: 120px;
+    padding: 0px 5px 0px 5px;
+}

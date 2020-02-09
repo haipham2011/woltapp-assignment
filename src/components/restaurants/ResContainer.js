@@ -42,7 +42,7 @@ const ResContainer = ({ restaurants, sort, page }) => {
                   ></i>
                   <span className="status"> {status}</span>
                 </Card.Text>
-                <Card.Text datatest="description">{description}</Card.Text>
+                <Card.Text datatest="description" className="">{description}</Card.Text>
                 <Card.Text datatest="delivery_price">
                   {delivery_price / 100} {currency}
                 </Card.Text>
