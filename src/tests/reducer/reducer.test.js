@@ -9,13 +9,12 @@ import testdata from "../../data/testdata.json";
 
 describe("reducer", () => {
   const restaurantsTest = testdata.restaurants;
-  
+
   it("Should return default state", () => {
     const expectedState = {
         page: 1,
         restaurants: [],
         sort: "name-asc",
-        suggestions: []
     };
 
     const newState = reducer(undefined, {});
@@ -27,7 +26,6 @@ describe("reducer", () => {
         page: 1,
         restaurants: restaurantsTest,
         sort: "name-asc",
-        suggestions: []
     };
 
     const newState = reducer(undefined, {
@@ -41,8 +39,7 @@ describe("reducer", () => {
     const expectedState = {
         page: 2,
         restaurants: [],
-        sort: "name-asc",
-        suggestions: []
+        sort: "name-asc"
     };
 
     const newState = reducer(undefined, {
@@ -56,8 +53,7 @@ describe("reducer", () => {
     const expectedState = {
         page: 1,
         restaurants: [],
-        sort: "name-desc",
-        suggestions: []
+        sort: "name-desc"
     };
 
     const newState = reducer(undefined, {

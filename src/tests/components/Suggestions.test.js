@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { findByTestAtrr, checkProps } from '../Utils';
-import { degToRad, getDistance, useCarousel } from '../../components/suggestions/SuggestFunc';
+import { degToRad, getDistance, useCarousel, useSuggest } from '../../components/suggestions/SuggestFunc';
 import SuggestContainer from '../../components/suggestions/SuggestContainer';
 import testdata from '../../data/testdata.json';
 import { act, renderHook } from '@testing-library/react-hooks';
 
-const suggestionsTest = testdata.restaurants.slice(0,3);
+const suggestions = testdata.restaurants.slice(0,3);
 
 describe('SuggestFunc test', () => {
     describe('degToRad test', () => {
@@ -26,8 +26,8 @@ describe('SuggestFunc test', () => {
             }
 
             const secondPoint = {
-                lat: suggestionsTest[0].location[1],
-                lon: suggestionsTest[0].location[0]
+                lat: suggestions[0].location[1],
+                lon: suggestions[0].location[0]
             }
             const ouput = Math.round( getDistance(firstPoint, secondPoint) * 100 ) / 100;
             expect(ouput).toEqual(expectedValue);
@@ -56,7 +56,7 @@ describe('SuggestContainer test', () => {
     describe('Checking PropTypes', () => {
         it('Should not throw a warning', () => {
             const expectedProps = {
-                suggestions: suggestionsTest
+                suggestions: suggestions
             };
 
             const propsErr = checkProps(SuggestContainer, expectedProps);
@@ -66,7 +66,7 @@ describe('SuggestContainer test', () => {
 
     describe('Have props', () => {
         const props = {
-            suggestions: suggestionsTest
+            suggestions: suggestions
         };
         const component = setUp(props);
 

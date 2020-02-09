@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { findByTestAtrr, checkProps } from '../Utils';
-import { pageNumCal, pageRangeCal, usePageBound } from '../../components/pagecontroller/PageControlFunc';
+import { createMapArr, pageNumCal, pageRangeCal, usePageBound } from '../../components/pagecontroller/PageControlFunc';
 import NumberContainer from '../../components/pagecontroller/NumberContainer';
 import PageControlContainer from '../../components/pagecontroller/PageControlContainer';
 import { act, renderHook } from '@testing-library/react-hooks';
@@ -9,27 +9,34 @@ import { act, renderHook } from '@testing-library/react-hooks';
 
 describe('PageControlFunc test', () => {
     const resNumber = 50;
-    const maxItemInOnePage = 5;
+    const maxItemInOnePage = 8;
+    const maxNumberInOnePage = 5;
     const pageAmount = pageNumCal(resNumber, maxItemInOnePage);
 
     describe('pageNumCal test', () => {
         it('Should return correct number of page', () => {
-            expect(pageAmount).toEqual(10);
+            expect(pageAmount).toEqual(7);
+        })
+    })
+
+    describe('createMapArr test', () => {
+        it('Should return correct array', () => {
+            const arr = createMapArr(1,5, item => item)
+            expect(arr).toEqual([1,2,3,4,5]);
         })
     })
 
     describe('pageRangeCal test', () => {
         it('Should return correct array of page range', () => {
             const page = 4;
-            const pageGroup = pageNumCal(pageAmount, maxItemInOnePage);
-            const pageRange = pageRangeCal(page, maxItemInOnePage, pageGroup, pageAmount)
+            const pageRange = pageRangeCal(page, maxNumberInOnePage, pageAmount)
             expect(pageRange).toEqual([1, 5]);
         })
     })
 
     describe('changePage test', () => {
         it('Should return correct array of page range', () => {
-            const { result } = renderHook(() => usePageBound(pageAmount));
+            const { result } = renderHook(() => usePageBound(pageAmount, maxNumberInOnePage));
             const dispatch = jest.fn();
 
             act(() => {
@@ -88,8 +95,7 @@ describe('PageControlContainer test', () => {
             const expectedProps = {
                 dispatch: jest.fn(),
                 page: 1, 
-                pageBoundary: [1,5],  
-                pageAmount: 10
+                resAmount: 50
             };
 
             const propsErr = checkProps(PageControlContainer, expectedProps);
@@ -101,8 +107,7 @@ describe('PageControlContainer test', () => {
         const props = {
             dispatch: jest.fn(),
             page: 1, 
-            pageBoundary: [1,5],  
-            pageAmount: 10
+            resAmount: 50
         };
         const component = setUp(props);
         

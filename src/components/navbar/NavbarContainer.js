@@ -9,7 +9,7 @@ const NavbarContainer = () => {
   return (
     <Navbar datatest="NavbarContainer">
       <Navbar.Brand>
-        <img alt={alt} src={src} datatest="logoImage" />
+        <img alt={alt} src={src} datatest="logoImg" />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">

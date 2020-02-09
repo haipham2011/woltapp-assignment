@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { setPage } from '../../actions/actions';
-import { pageConfig } from '../../config';
 
 
 export const createMapArr = (min, max, fn) => {
@@ -20,7 +19,8 @@ export const pageNumCal = (total, range) => {
     return amount
 }
 
-export const pageRangeCal = (page, maxNumberInOnePage, pageGroup, pageAmount) => {    
+export const pageRangeCal = (page, maxNumberInOnePage, pageAmount) => {
+    const pageGroup = pageNumCal(pageAmount, maxNumberInOnePage);    
     const rangePage = createMapArr(1,pageGroup, index => {
         const range = maxNumberInOnePage -1;
         const min = maxNumberInOnePage*index-range;
@@ -33,8 +33,7 @@ export const pageRangeCal = (page, maxNumberInOnePage, pageGroup, pageAmount) =>
     return rangePage;
 }
 
-export const usePageBound = (pageAmount, pageGroup) => {
-    const { maxNumberInOnePage } = pageConfig;
+export const usePageBound = (pageAmount, maxNumberInOnePage) => {
     const [bound, setBound] = useState([1,maxNumberInOnePage]);
 
     const changePage = (dispatch, page, type) => {
@@ -54,7 +53,7 @@ export const usePageBound = (pageAmount, pageGroup) => {
         }
     
         dispatch(setPage(newPage));
-        setBound(pageRangeCal(newPage, maxNumberInOnePage, pageGroup, pageAmount));
+        setBound(pageRangeCal(newPage, maxNumberInOnePage, pageAmount));
     }
 
     return {bound, changePage}

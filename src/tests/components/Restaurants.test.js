@@ -1,7 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { findByTestAtrr, checkProps } from '../Utils';
-import { limitRestaurants, sortRestaurant } from '../../components/restaurants/ResFunc';
+import { limitRestaurants } from '../../components/restaurants/ResFunc';
+import { sortObjects } from '../../actions/actions';
 import ResContainer from '../../components/restaurants/ResContainer';
 import TagsContainer from '../../components/restaurants/TagsContainer';
 import testoutput from '../../data/testoutput.json';
@@ -11,41 +12,13 @@ const restaurantsTest = testdata.restaurants;
 
 describe('ResFunc test', () => {
 
-
-    describe('sortRestaurant test', () => {
-
-        it('Should return list of restaurant A-Z', () => {
-            const output = sortRestaurant(restaurantsTest, "name-asc");
-            const expectValue = testoutput.sort["name-asc"]
-            expect(output).toEqual(expectValue);
-        })
-
-        it('Should return list of restaurant Z-A', () => {
-            const output = sortRestaurant(restaurantsTest, "name-desc");
-            const expectValue = testoutput.sort["name-desc"]
-            expect(output).toEqual(expectValue);
-        })
-
-        it('Should return list of restaurant price ascending', () => {
-            const output = sortRestaurant(restaurantsTest, "delivery_price-asc");
-            const expectValue = testoutput.sort["delivery_price-asc"]
-            expect(output).toEqual(expectValue);
-        })
-
-        it('Should return list of restaurant price descending', () => {
-            const output = sortRestaurant(restaurantsTest, "delivery_price-desc");
-            const expectValue = testoutput.sort["delivery_price-desc"]
-            expect(output).toEqual(expectValue);
-        })
-    })
-
     describe('limitRestaurants test', () => {
         const page = 2;
         const maxItemInOnePage = 4;
         const sortType = "name-asc";
 
         it('Should return list of restaurant A-Z and correct length', () => {
-            const restaurantSorted = sortRestaurant(restaurantsTest, sortType);
+            const restaurantSorted = sortObjects(restaurantsTest, sortType);
             const output = limitRestaurants(restaurantSorted, page, maxItemInOnePage);
             const expectValue = testoutput.limit[sortType]
             expect(output).toEqual(expectValue);
@@ -122,32 +95,32 @@ describe('ResContainer test', () => {
 
         it('Should render restaurant', () => {
             const wrapper = findByTestAtrr(component, "restaurant");
-            expect(wrapper.length).toBe(5);
+            expect(wrapper.length).toBe(2);
         })
 
         it('Should render name', () => {
             const wrapper = findByTestAtrr(component, "name");
-            expect(wrapper.length).toBe(5);
+            expect(wrapper.length).toBe(2);
         })
 
         it('Should render description', () => {
             const wrapper = findByTestAtrr(component, "description");
-            expect(wrapper.length).toBe(5);
+            expect(wrapper.length).toBe(2);
         })
 
         it('Should render delivery_price', () => {
             const wrapper = findByTestAtrr(component, "delivery_price");
-            expect(wrapper.length).toBe(5);
+            expect(wrapper.length).toBe(2);
         })
 
         it('Should render status', () => {
             const wrapper = findByTestAtrr(component, "status");
-            expect(wrapper.length).toBe(5);
+            expect(wrapper.length).toBe(2);
         })
 
         it('Should render image', () => {
             const wrapper = findByTestAtrr(component, "image");
-            expect(wrapper.length).toBe(5);
+            expect(wrapper.length).toBe(2);
         })
     });
 })

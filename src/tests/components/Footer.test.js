@@ -4,8 +4,8 @@ import { findByTestAtrr } from "../Utils";
 import FooterContainer from "../../components/footer/FooterContainer";
 
 describe("FooterContainer test", () => {
-  const setUp = (props = {}) => {
-    const component = shallow(<FooterContainer {...props} />);
+  const setUp = () => {
+    const component = shallow(<FooterContainer />);
     return component;
   };
   const component = setUp();

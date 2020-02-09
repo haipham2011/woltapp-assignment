@@ -40,7 +40,7 @@ export const useSuggest = () => {
       setSuggestion(dataSorted.slice(0,3));
     });
   }
-
+    
   return { suggestions, suggestLocation }
 }
 

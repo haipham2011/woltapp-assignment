@@ -27,9 +27,7 @@ export const setSort = sort => {
 export const sortObjects = (objects, sort) => {
     //field : Name or Price
     //type: ascending or descending
-    const [field , type] = sort.split("-");
-    console.log(field, type);
-    
+    const [field , type] = sort.split("-");    
     const compare = (a,b) => {
       if( type === 'asc'){
         return (a[field] > b[field]) ? 1 : ((b[field] > a[field]) ? -1 : 0) 

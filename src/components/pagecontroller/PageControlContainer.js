@@ -9,8 +9,7 @@ import { pageConfig } from '../../config';
 const PagesControlContainer = ({ dispatch, page, resAmount }) => {
     const { maxItemInOnePage, maxNumberInOnePage } = pageConfig;
     const pageAmount = pageNumCal(resAmount, maxItemInOnePage);
-    const pageGroup = pageNumCal(pageAmount, maxNumberInOnePage);
-    const { bound, changePage } = usePageBound(pageAmount, pageGroup);
+    const { bound, changePage } = usePageBound(pageAmount, maxNumberInOnePage);
     const [min, max] = bound;    
     
     return(
