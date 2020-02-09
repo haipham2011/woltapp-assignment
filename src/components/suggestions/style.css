@@ -1,0 +1,17 @@
+.carousel {
+    height: 600px;
+}
+
+.carousel img {
+    height: 600px;
+    filter: brightness(80%);
+}
+
+.carousel h3 {
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+
+.carousel p {
+    font-size: 1.5rem;
+}
