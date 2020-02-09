@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { setPage } from '../../actions/actions';
 
-
+//Create an array from min to max number with Higher order function
 export const createMapArr = (min, max, fn) => {
     const newArray = [];
     for(let i = min; i <= max; i++){
