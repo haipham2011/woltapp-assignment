@@ -1,8 +1,8 @@
-import { SORT_RESTAURANTS } from "../../actions/actionTypes";
+import { SET_SORT } from "../../actions/actionTypes";
 
 export default (state = "name-asc", action) => {
     switch(action.type){
-        case SORT_RESTAURANTS:            
+        case SET_SORT:            
             return action.sort
 
         default:

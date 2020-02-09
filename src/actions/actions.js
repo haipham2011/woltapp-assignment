@@ -1,4 +1,4 @@
-import { GET_RESTAURANTS, SET_PAGE, SORT_RESTAURANTS } from './actionTypes';
+import { GET_RESTAURANTS, SET_PAGE, SET_SORT } from './actionTypes';
 import data from '../data/restaurants.json';
  
 export const getRestaurants = () => {
@@ -16,9 +16,28 @@ export const setPage = page => {
     }
 }
 
-export const sortRestaurants = sort => {
+export const setSort = sort => {
     return {
-        type: SORT_RESTAURANTS,
+        type: SET_SORT,
         sort
     }
+}
+
+  
+export const sortObjects = (objects, sort) => {
+    //field : Name or Price
+    //type: ascending or descending
+    const [field , type] = sort.split("-");
+    console.log(field, type);
+    
+    const compare = (a,b) => {
+      if( type === 'asc'){
+        return (a[field] > b[field]) ? 1 : ((b[field] > a[field]) ? -1 : 0) 
+      }
+      else {
+        return (a[field] > b[field]) ? -1 : ((b[field] > a[field]) ? 1 : 0)
+      }
+    };
+
+    return objects.sort(compare);
 }

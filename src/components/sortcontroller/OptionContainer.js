@@ -1,12 +1,12 @@
 import React from "react";
 import { Form } from "react-bootstrap";
-import { sortRestaurants } from "../../actions/actions";
+import { setSort } from "../../actions/actions";
 import { sortConfig } from "./config";
 import PropTypes from "prop-types";
 
 const OptionContainer = ({ dispatch, sort }) => {
   const handleChange = e => {
-    dispatch(sortRestaurants(e.target.value));
+    dispatch(setSort(e.target.value));
   };
   return (
     <Form.Control

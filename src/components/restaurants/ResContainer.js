@@ -1,13 +1,14 @@
 import React from "react";
 import { Card, CardColumns } from "react-bootstrap";
 import TagsContainer from "./TagsContainer";
-import { limitRestaurants, sortRestaurant } from "./ResFunc";
+import { limitRestaurants } from "./ResFunc";
+import { sortObjects } from "../../actions/actions";
 import { pageConfig } from "../../config";
 import PropTypes from "prop-types";
 
 const ResContainer = ({ restaurants, sort, page }) => {
   const { maxItemInOnePage } = pageConfig;
-  const resGroup = sortRestaurant(restaurants, sort);
+  const resGroup = sortObjects(restaurants, sort);
   const resGroupLimited = limitRestaurants(resGroup, page, maxItemInOnePage);
 
   return (

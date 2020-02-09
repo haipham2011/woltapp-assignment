@@ -1,8 +1,7 @@
 import {
   GET_RESTAURANTS,
   SET_PAGE,
-  SORT_RESTAURANTS,
-  SET_SUGGESTION
+  SET_SORT
 } from "../../actions/actionTypes";
 import reducer from "../../reducers";
 import testdata from "../../data/testdata.json";
@@ -10,8 +9,7 @@ import testdata from "../../data/testdata.json";
 
 describe("reducer", () => {
   const restaurantsTest = testdata.restaurants;
-  const suggestionsTest = restaurantsTest.slice(0,3);
-
+  
   it("Should return default state", () => {
     const expectedState = {
         page: 1,
@@ -63,23 +61,8 @@ describe("reducer", () => {
     };
 
     const newState = reducer(undefined, {
-          type: SORT_RESTAURANTS,
+          type: SET_SORT,
           sort: "name-desc"
-      });
-    expect(newState).toEqual(expectedState);
-  })
-
-  it('Should return new state if change suggestion', () => {
-    const expectedState = {
-        page: 1,
-        restaurants: [],
-        sort: "name-asc",
-        suggestions: suggestionsTest
-    };
-
-    const newState = reducer(undefined, {
-          type: SET_SUGGESTION,
-          suggestions: suggestionsTest
       });
     expect(newState).toEqual(expectedState);
   })

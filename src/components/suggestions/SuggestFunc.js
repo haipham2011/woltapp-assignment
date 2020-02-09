@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import _ from 'lodash';
+import { sortObjects } from '../../actions/actions';
 
 export const degToRad = deg => {
     return deg * (Math.PI/180);
@@ -34,9 +34,8 @@ export const useSuggest = () => {
   
         element['distance'] = getDistance(currentPos, restaurantPos);
         return element;
-      });
-  
-      const dataSorted = _.orderBy(dataIncludeDis, ['distance'],['asc']);
+      });    
+      const dataSorted = sortObjects(dataIncludeDis, 'distance-asc');
       
       setSuggestion(dataSorted.slice(0,3));
     });
