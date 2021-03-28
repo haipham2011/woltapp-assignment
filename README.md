@@ -32,3 +32,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `docker build . -t woltapp-assignment && docker run -it -d -p 3000:3000 woltapp-assignment`
+
+Build and run docker image for this project.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
